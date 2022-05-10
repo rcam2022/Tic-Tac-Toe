@@ -3,25 +3,23 @@ import java.util.Scanner;
 public class TicTacToe
 {
     public static void main(String[] args)
-    {
-        int[][] board = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }}; //Storing in a matrix that is 3x3
-    	char[][] game = {{ ' ', ' ', ' '},{ ' ', ' ', ' '}, {' ', ' ', ' '}};
+    {   
+        //HARD DIFFICULTY
     	char cont, win = 'N';
     	String userInput;
-    	int x;
-    	int y;
     	int playerplace;
     	int count = 0;
-    	int computerplace;
     	Scanner input = new Scanner(System.in);
     	System.out.println("Welcome to Tic-Tac-Toe v.1 \n \n \n");
     	GameProcedures gameBoard = new GameProcedures();
-    	
-    	gameBoard.printBoard();
-    	
-    	
+    		
     	do
     	{
+    	    gameBoard.printBoard();
+    	    //X goes when count = 0,2,4,6,8
+    	    
+    	    //O goes when count = 1,3,5,7
+    		
     		while(count != 9 && win !='Y')
     		{	
     		
@@ -46,22 +44,23 @@ public class TicTacToe
     		
     	    do
     		{
-    			System.out.println("Would you like to continue? \n");
+    			System.out.println("Would you like to continue? (type Y or N) \n");
     			userInput = input.nextLine();
     			userInput = userInput.toUpperCase();
     			cont = userInput.charAt(0);
-    			if (cont != 'Y' & cont != 'N')
+    			if (cont != 'Y' && cont != 'N')
     			{
     				System.out.println("Invalid Entry \n");
     				System.out.println("Enter Y for yes or N for no \n");
     			}
-    		}while(cont != 'Y' & cont != 'N');
+    		}while(cont != 'Y' && cont != 'N');
     
             gameBoard.gameReset();
-            if(cont =='Y'){
+            if(cont == 'Y' && win == 'N'){
                 gameBoard.printBoard();
             }
             count = 0;
+            win = 'N';
     
     	}while(cont == 'Y');
     
